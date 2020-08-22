@@ -1,0 +1,30 @@
+body {
+    background-color: blue;
+    color:white;
+}
+
+a {
+    color:red;
+    text-decoration:none;
+}
+
+.fondoEnRojo {
+    background-color:red;
+    border: 5px solid black;
+}
+/*
+Para usar es <elemento id="menuNavegacion"></elemento>
+Donde elemento puede ser a, p, span, etc..
+*/
+#menuNavegacion {
+    background-color: #cd853f;
+    color:black;
+}
+
+ul > li {
+    display: inline-block;
+    color: white;
+}
+ul > li a {
+    color:white;
+}
