@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+               $('#txtNombre').on('change',function(event) {
+                   $('#nombrePersona').text(event.target.value);
+                   console.log('Mi nuevo valor es' +event.target.value);
+               });
+
+               $('#txtEdad').change(function (event) {
+                   $('#edadPersona').text(event.target.value);
+               });
+            });
+        </script>
+</head>
+
+<body>
+   <div class="container">
+       <ul>
+           <li>Mi nombre es: <span id="nombrePersona"></span></li>
+           <li>Mi edad es: <span id="edadPersona"></span></li>
+       </ul>
+    <form action="index.html" id="formulario">
+        <div class="form-group">
+            <label for="txtName">Ingrese su nombre.</label>
+            <input type="text" name="txtNombre" id="txtNombre" minlength="2" maxlength="40" class="form-control" 
+            placeholder="Ingresa tu nombre"
+            value="Jose Nuñez">
+        </div>
+
+        <div class="form-group">
+            <label for="txtEdad">Ingrese Edad</label>
+            <input type="number" name="txtEdad" id="txtEdad" min="0" max="120" class="form-control" placeholder="Ingresa tu edad" value="25">
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="txtContrasenia">Ingrese contraseña</label>
+            <input type="password" name="txtContrasenia" id="txtContrasenia" class="form-control" placeholder="Ingresa tu clave." value="1234">
+        </div>
+        <div class="form-group">
+            <label for="txtFechaNacimiento">Ingrese fecha nacimiento</label>
+            <input type="date" name="txtFechaNacimiento" class="form-control" id="txtFechaNacimiento" placeholder="Ingresa tu fecha de nacimiento"
+            max="2020-09-20" 
+            min="2020-08-31">
+        </div>
+
+        <div class="form-group">
+            <label for="">Ingrese sexo</label>
+            <input type="radio" name="txtGenero" id="checkMasculino" value="masculino">
+            <label for="checkMasculino">Masculino</label>
+
+            <input type="radio" name="txtGenero" id="checkFemenino" value="femenino">
+            <label for="checkFemenino">Femenino</label>
+
+            <input type="radio" name="txtGenero" id="checkOtro" value="otro">
+            <label for="checkOtro">Otro</label>
+        </div>
+        <div class="form-group">
+            <label for="selectComuna">Ingrese Comuna</label>
+            <select class="form-control" id="selectComuna">
+              <option value="0" selected disabled>Selecciona una comuna</option>
+              <option value="1">Buin</option>
+              <option value="2">Cerrillos</option>
+              <option value="3">Maipu</option>
+              <option value="4">Pudahuel</option>
+              <option value="5">Recoleta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+              <label for="">Selecciona los sintomas que ha presentado</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="chckTemperatura" value="chckTemperatura">
+            <label class="form-check-label" for="chckTemperatura">Tº sobre 38.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="chckContactoCovid" value="chckContactoCovid">
+            <label class="form-check-label" for="chckContactoCovid">Contacto con personas con COVID</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="chckSintomasGripe" value="chckSintomasGripe">
+            <label class="form-check-label" for="chckSintomasGripe">Sintomas de Gripe</label>
+          </div>
+        <div class="form-group">
+            <input type="submit" value="Enviar formulario" class="btn btn-success">
+            <input type="reset" value="Resetear formulario" class="btn btn-danger">
+        </div>
+
+    </form>
+   </div>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+</html>
