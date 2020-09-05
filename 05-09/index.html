@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script>
+        const SUMA = '+';
+        const RESTA = '-';
+        const MULTIPLICAR = '*';
+        const DIVIDIR = '/';
+        function suma(numero_1, numero_2) {
+            return numero_1 + numero_2;
+        }
+        function resta(numero_1, numero_2) {
+            return numero_1 - numero_2;
+        }
+        function multiplicar(numero_1, numero_2) {
+            return numero_1 * numero_2;
+        }
+        function division(numero_1, numero_2) {
+            return numero_1 / numero_2;
+        }
+        /**
+         * @param {number} numero_1
+         * @param {number} numero_2
+         * @param {string} operador
+         * @returns {number}
+         */
+        function calculadora(numero_1, numero_2, operador) {
+            if (operador === SUMA)
+                return suma(numero_1, numero_2);
+
+            if (operador === RESTA)
+                return resta(numero_1, numero_2);
+
+            if (operador === MULTIPLICAR)
+                return multiplicar(numero_1, numero_2);
+
+            if (operador === DIVIDIR)
+                return division(numero_1, numero_2);
+        }
+
+        $(document).ready(function () {
+            const btnCalculo = $('#btnCalculo');
+            const tituloResultado = $('#tituloResultado');
+            // Ocultamos el titulo
+            tituloResultado.hide();
+            //Inicializamos variables de texto
+            const textoNumero1 = $('#textoNumero1');
+            const textoNumero2 = $('#textoNumero2');
+            const textoOperacionArimetica = $('#textoOperacionArimetica');
+            const textoResultado = $('#textoResultado');
+
+            //Inicializamos variables de los input
+            const txtNumero1 = $('#txtNumero1');
+            const txtNumero2 = $('#txtNumero2');
+            const slctOperacionArimetica = $('#slctOperacionArimetica');
+
+            txtNumero1.change(function (event) {
+                textoNumero1.text(event.target.value);
+            });
+
+            txtNumero2.change(function (event) {
+                textoNumero2.text(event.target.value);
+            });
+
+            slctOperacionArimetica.change(function (event) {
+                textoOperacionArimetica.text(event.target.value);
+            });
+            /*
+                    undefined: "Indefinido".
+                    null: Nulo
+                    undefined != null
+                    */
+            function validarFormulario() {
+                let errores = [];
+
+                if (!txtNumero1.val())
+                    errores.push('El número 1 debe tener un valor');
+
+                if (!txtNumero2.val())
+                    errores.push('El número 2 debe tener un valor');
+
+                if (!slctOperacionArimetica.val())
+                    errores.push('Debes seleccionar una operación arimetica');
+
+                if (slctOperacionArimetica.val() === '/' && txtNumero2.val() == 0)
+                    errores.push('No puedes dividir por 0');
+
+                return errores;
+            }
+            btnCalculo.click(function () {
+                const formularioTieneErrores = validarFormulario();
+
+                if (formularioTieneErrores.length > 0) {
+                    let mostrarErrores = formularioTieneErrores.join('\n');
+                    alert(mostrarErrores);
+                    return;
+                }
+                let valorTxtNumero1 = parseInt(txtNumero1.val());
+                let valorTxtNumero2 = parseInt(txtNumero2.val());
+                let valorSlctOperacionArimetica = slctOperacionArimetica.val();
+                let valorResultado = calculadora(valorTxtNumero1, valorTxtNumero2, valorSlctOperacionArimetica);
+                tituloResultado.show();
+                textoResultado.text(valorResultado);
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 id="tituloResultado">El resultado entre
+            <span id="textoNumero1"></span> y <span id="textoNumero2"></span>
+            aplicando la operación arimetica <span id="textoOperacionArimetica"></span>
+            es:
+            <span id="textoResultado"></span> </h2>
+
+        <div class="form-group">
+            <label for="txtNumero1">Ingrese numero 1:</label>
+            <input type="number" name="txtNumero1" id="txtNumero1" class="form-control" placeholder="Ingrese numero 1"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="txtNumero2">Ingrese numero 2:</label>
+            <input type="number" name="txtNumero2" id="txtNumero2" class="form-control" placeholder="Ingrese numero 2"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="slctOperacionArimetica">Seleccione operación aritmetica</label>
+            <select name="slctOperacionArimetica" id="slctOperacionArimetica" class="form-control">
+                <option value="0" selected disabled>Seleccione operación aritmetica</option>
+                <option value="+">Suma</option>
+                <option value="-">Resta</option>
+                <option value="*">Multiplicación</option>
+                <option value="/">División</option>
+            </select>
+        </div>
+
+        <button id="btnCalculo" class="btn btn-primary">Realizar calculo</button>
+        <button id="btnReset" class="btn btn-danger">Resetar formulario</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

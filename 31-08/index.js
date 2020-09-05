@@ -11,7 +11,6 @@ function multiplicar(numero_1,numero_2){
 const SUMA = 'suma';
 const RESTA = 'resta';
 const MULTIPLICAR = 'multiplicar';
-
 function calculadora(numero_1,numero_2,operador){
 
     if(operador === SUMA)
