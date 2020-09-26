@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Cargando hojas de estilos de Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Cargando jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('form[name="formularioContacto"]')
+                .validate({
+                    errorElement: 'span',
+                    errorPlacement: function (error, element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).removeClass('is-invalid');
+                    },
+                    rules: {
+                        txtCorreo: {
+                            required: true,
+                            email: true
+
+                        },
+                        txtPassword: {
+                            required: true,
+                        }
+                    },
+                    messages: {
+                        txtCorreo: {
+                            required: 'El campo del correo es requerido',
+                            email: 'El campo de correo debe tener un formato de correo.'
+                        },
+                        txtPassword: {
+                            required: 'El campo de contraseña es requerido'
+                        }
+                    }
+                })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <form name="formularioContacto">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Correo electronico</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="txtCorreo"
+                    aria-describedby="emailHelp" placeholder="Ingresa tu correo (j.nunez@profesor.duoc.cl)">
+                <small id="emailHelp" class="form-text text-muted">No compartas nunca tu correo..</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="txtPassword"
+                    placeholder="Ingresa tu contraseña">
+            </div>
+            <div class="form-group">
+                <label for="inputTelefono">Telefono</label>
+                <input type="tel" class="form-control" id="inputTelefono" name="txtTelefono"
+                    placeholder="Ingresa tu telefono" pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Enviar"></button>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
