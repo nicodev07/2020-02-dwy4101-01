@@ -1,0 +1,9 @@
+{% if planes %}
+<ul>
+    {% for plan in planes %}
+    <li><a href="/planes/{{ plan.id}}">{{ plan.name}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay planes disponibles</p>
+{% endif %}
