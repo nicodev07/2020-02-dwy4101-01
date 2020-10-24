@@ -14,7 +14,6 @@ def index(request):
 """ Este es el controlador para /planes/{id}.
 NOTA: Está declarado como {id} porque es PARAMETRIZABLE. """
 
-
 def show(request, planId):
     try:
         plan = Plan.objects.get(pk=planId)
