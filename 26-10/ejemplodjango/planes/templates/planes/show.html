@@ -1,0 +1,7 @@
+{% if plan %}
+<p>El nombre del plan es <strong>{{ plan.name }}</strong>. El precio es <strong>{{ plan.price }}</strong></p>
+
+<p>Precio por {{numeroLineas}} linea: {{ preciosPorLineas }}</p>
+{% else %}
+<p>No hay plan.</p>
+{% endif %}
