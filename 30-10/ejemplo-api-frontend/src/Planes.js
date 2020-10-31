@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { ListGroup } from 'react-bootstrap'
+
 const PlanComponent = () => {
     const [planes, setPlanes] = useState([]);
 
@@ -10,10 +12,14 @@ const PlanComponent = () => {
             .catch((error) => console.error(error));
     }, [])
 
-    return (<ul>
-        {planes.map((plan) => {
-            return (<li>{plan.name}</li>)
-        })}
-        </ul>);
+    const renderPlanes = (plan) => {
+        return (<ListGroup.Item>{plan.name}</ListGroup.Item>)
+    }
+    
+    return (
+        <ListGroup>
+            {planes.map(renderPlanes)}
+        </ListGroup>
+    );
 }
 export default PlanComponent;

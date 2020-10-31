@@ -1,19 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import Planes from './Planes';
-
+import Menu from './Menu';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hola Mundo!
-        </p>
-
-        <Planes/>
-
-      </header>
+      <Menu/>
+        <Planes />
     </div>
   );
 }
